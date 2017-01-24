@@ -1,0 +1,16 @@
+/* pages/kuCun/index.wxss */
+.image1 {
+height: 600px;
+}
+
+.container33
+{
+    text-align: center;
+}
+
+.gguanjianzi{
+    width: 30%;
+}
+.chaxun{
+    width: 40%;
+}
