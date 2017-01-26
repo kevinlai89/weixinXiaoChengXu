@@ -3,12 +3,8 @@
 var app = getApp()
 Page({
   data: {
-    motto: '思诚资源欢迎您！',
-    
-    userInfo: {},
-    btnText:'点击修改企业图标',
-    aShow:true,
-    inmageUrl:null
+    motto: 'Hello World, weicms',
+    userInfo: {}
   },
   //事件处理函数
   bindViewTap: function() {
@@ -16,32 +12,6 @@ Page({
       url: '../logs/logs'
     })
   },
-
-btnClick:function(){
-  console.log("点击按钮了")
-  //this.setData({aShow:!this.data.aShow})
-  var page = this;
-
-  wx.chooseImage({
-    count: 9, // 最多可以选择的图片张数，默认9
-    sizeType: ['original', 'compressed'], // original 原图，compressed 压缩图，默认二者都有
-    sourceType: ['album', 'camera'], // album 从相册选图，camera 使用相机，默认二者都有
-    success: function(res){
-            // success
-        var tempFilePaths = res.tempFilePaths
-        console.log(tempFilePaths)
-
-        page.setData({imageUrl:tempFilePaths})
-    },
-    fail: function() {
-      // fail
-    },
-    complete: function() {
-      // complete
-    }
-  })
-},
-  
   onLoad: function () {
     console.log('onLoad')
     var that = this
@@ -52,5 +22,11 @@ btnClick:function(){
         userInfo:userInfo
       })
     })
+
+                  var len = res.data.length;
+              console.log(len);
+              for(var i=0; i<len;i++){
+                console.log(res.data[i].id);
+              }
   }
 })

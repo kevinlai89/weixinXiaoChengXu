@@ -1,8 +1,0 @@
-<view class="container33">
- 库存查询!
- <input /><button>查询</button>
-
- 
- <image class="image_frame" src="../images/aa.png" mode="widthFix" >  
-</image> 
-</view>

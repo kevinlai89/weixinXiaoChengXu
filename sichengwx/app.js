@@ -6,25 +6,60 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
   },
-  getUserInfo:function(cb){
+  getUserInfo: function (cb) {
     var that = this
-    if(this.globalData.userInfo){
+    if (this.globalData.userInfo) {
       typeof cb == "function" && cb(this.globalData.userInfo)
-    }else{
+    } else {
       //调用登录接口
       wx.login({
-        success: function () {
-          wx.getUserInfo({
-            success: function (res) {
-              that.globalData.userInfo = res.userInfo
-              typeof cb == "function" && cb(that.globalData.userInfo)
-            }
-          })
+        success: function (res) {
+          if (res.code) {
+            wx.request({
+              url: that.url + 'addon/Cms/Cms/sendCode',
+              data: {
+                code: res.code,
+                PHPSESSID: wx.getStorageSync('PHPSESSID')
+              },
+              success: function (res) {
+                //缓存session_id
+                wx.setStorageSync('PHPSESSID', res.data.PHPSESSID)
+                wx.setStorageSync('openid', res.data.openid)
+
+                //获取用户信息
+                wx.getUserInfo({
+                  success: function (res) {
+                    that.globalData.userInfo = res.userInfo
+                    typeof cb == "function" && cb(that.globalData.userInfo)
+
+                    //console.log(res);
+                    wx.request({
+                      url: that.url + 'addon/Cms/Cms/saveUserInfo',
+                      data: {
+                        encryptedData: res.encryptedData,
+                        PHPSESSID: wx.getStorageSync('PHPSESSID'),
+                        iv: res.iv
+                      },
+                      success: function (res) {
+                        //console.log(res)
+                      }
+                    })
+
+                  }
+                })
+              }
+            })
+          }
         }
       })
     }
   },
-  globalData:{
-    userInfo:null
-  }
+  globalData: {
+    userInfo: null
+  },
+//https://www2.ec-sourcing.com/index.php?s=/addon/Cms/Cms/getlist
+   url:'https://www2.ec-sourcing.com/index.php?s=' 
+ //  url:'http://localhost:6001/index.php?s=' 
+
+
 })

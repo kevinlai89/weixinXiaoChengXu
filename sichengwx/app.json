@@ -1,37 +1,37 @@
 {
-  "pages": [
+  "pages":[
+    "pages/lists/lists",
+    "pages/detail/detail",
+    "pages/aboutme/aboutme",
+    "pages/form/form",
     "pages/index/index",
-    "pages/kuCun/index",
-    "pages/about/index",
     "pages/logs/logs"
-      
   ],
-  "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "思诚资源",
-    "navigationBarTextStyle": "black"
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#000",
+    "navigationBarTitleText": "思诚报价平台",
+    "navigationBarTextStyle":"white"
   },
   "tabBar": {
-    "list": [
-      {
-        "pagePath": "pages/index/index",
-        "text": "首页"
-      },   
-      
-  {
-        "pagePath": "pages/kuCun/index",
-        "text": "报价查询"
-      },
-        {
-        "pagePath": "pages/about/index",
-        "text": "关于"
-      },
-      
-      {
-        "pagePath": "pages/logs/logs",
-        "text": "日志"
-      }
+    "list": [{
+      "pagePath": "pages/lists/lists",
+      "text": "首页",
+      "iconPath":"images/1.png",
+      "selectedIconPath":"images/2.png"
+    }, 
+    {
+      "pagePath": "pages/aboutme/aboutme",      
+      "text": "关于我们",
+      "iconPath":"images/3.png",
+      "selectedIconPath":"images/4.png"
+    },
+    {
+      "pagePath": "pages/form/form",      
+      "text": "用户反馈",
+      "iconPath":"images/3.png",
+      "selectedIconPath":"images/4.png"
+    }    
     ]
-  }
+  }  
 }
