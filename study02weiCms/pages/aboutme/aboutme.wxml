@@ -1,0 +1,9 @@
+<view class="container">
+<view><image src="{{img}}" ></image></view>
+<view>{{title}}</view>
+<view class="lianxi">{{lianxi}}</view>
+<view class="teldizhi">
+<view>{{tel}}</view>
+<view class="dizhi">{{dizhi}}</view>
+</view>
+</view>

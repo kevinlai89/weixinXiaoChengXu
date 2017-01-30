@@ -1,0 +1,35 @@
+{
+  "pages":[
+"pages/lists/lists",
+"pages/detail/detail",
+"pages/aboutme/aboutme",
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "weiCMS测试系统",
+    "navigationBarTextStyle":"black"
+  },
+    "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/lists/lists",
+        "text": "首页",
+        "iconPath":"pages/images/1.png",   
+             "selectedIconnPath":"pages/images/2.png"
+      },   
+      
+      
+      {
+        "pagePath": "pages/aboutme/aboutme",
+        "text": "关于我们",
+        "iconPath":"pages/images/3.png",
+                          "selectedIconnPath":"pages/images/4.png"
+                          
+      }
+    ]
+  }
+
+}

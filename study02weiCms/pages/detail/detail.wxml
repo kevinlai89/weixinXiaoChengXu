@@ -1,0 +1,10 @@
+<view class="container">
+详情页面。
+
+<view>{{info.title}}</view>
+<view>{{info.ctime}}</view>
+  <view>
+      <image src="{{info.img}}"></image>
+    </view>
+
+</view>

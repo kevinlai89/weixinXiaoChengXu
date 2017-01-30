@@ -1,0 +1,14 @@
+/* pages/aboutme/aboutme.wxss */
+
+.text2
+{
+	width:90%;
+}
+.dizhi{
+	margin-top: 90px;
+	
+	}
+.teldizhi
+{
+	margin-top:200px;
+}

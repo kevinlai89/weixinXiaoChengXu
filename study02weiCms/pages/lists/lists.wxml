@@ -1,0 +1,23 @@
+<view class="warp">
+ 
+  <!--模板开始-->
+  <template name="items">
+  <navigator url="../detail/detail" hover-class="navigator-hover">
+    <view class="imgs">
+      <image src="{{img}}"></image>
+    </view>
+    <view class="infos">
+    <view class="title">{{title}}</view>
+    <view class="ctime">{{ctime}}</view>
+    </view>
+    </navigator>
+  </template>
+
+  <!--模板结束-->
+
+  <!--循环-->
+
+  <view wx:for="{{newsList}}" class="list">
+  <template is="items" data="{{...item}}" /> 
+  </view>
+</view>
