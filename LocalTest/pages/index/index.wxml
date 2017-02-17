@@ -1,47 +1,68 @@
 <!--index.wxml-->
+<!--<loading hidden="{{!loading}}">
+	{{title}}
+</loading>-->
 <view class="container">
-
-    <form catchsubmit="formSubmit" >
-      <view class="account-detail"> 
-        <input placeholder="账目详情" name="inputdetail"  type="text" />
+<scroll-view  scroll-y="true"  class="page-body" bindscrolltolower="loadMore">
+  <!--banner-->
+  <view class="swiper">
+      <swiper indicator-dots="{{indicatorDots}}" vertical="{{vertical}}"
+              autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+          <block wx:for-items="{{banner_url}}">
+              <swiper-item>
+                <block wx:if="{{item}}">
+                  <image src="{{item}}"  mode="aspectFill"/>
+                </block>
+                <block wx:else>
+                  <image src="../../images/default_pic.png" mode="aspectFill"></image>
+                </block>
+              </swiper-item>
+          </block>
+      </swiper>
+  </view>
+  <!--nav-->
+  <view class="nav_top">
+    <block wx:for="{{navTopItems}}">
+      <view class="nav_top_items {{curNavId == item.id ? 'active_'+colors[index] : ''}}" bindtap="switchTab" data-index="{{index}}" data-id="{{item.id}}">
+        <image src="{{item.icon}}" mode="aspectFill"></image>
+        <text>{{item.title}}</text>
       </view>
-
-      <view class="account-amount"> 
-        <input placeholder="账目数额" name="inputamount" type="number" />
-      </view>
-      
-      <view class="add-one">
-        <button formType="submit" type="primary" loading="{{buttonLoading}}"> 记一笔 </button>
-      </view>
-    </form>
-
-    <view  class="account-list-text">
-      <text>账单列表:</text>
-    </view>
-
-    <view  class="account-list-all-amount">
-      <text>合计:{{accountTotal}}</text>
-    </view>
-    
-    <block wx:for="{{accountData}}" >
-      <view class="account-list">
-        <view class="account-list-detail">
-          {{item.detail}}
-        </view>
-
-        <view class="account-list-amount">
-          {{item.amount}}
-        </view>
-
-        <view class="account-list-del">
-            <button size="mini"  type="warn"  data-index-key="{{index}}"  bindtap="deleteRow" >删除</button>
-        </view>
-
-        </view>
     </block>
-
+  </view>
+  <!--list-->
+  <view class="nav_section">
+    <view wx:if="{{list[curIndex]}}">
+        <block wx:for="{{list[curIndex]}}">
+            <view class="nav_section_items" >
+                <!--image-->
+                <view class="section_image" bindtap="navigateDetail" data-aid="{{item.id}}">
+                <block wx:if="{{item.coverpath}}">
+                    <image src="{{item.coverpath}}" mode="aspectFill"></image>
+                </block>
+                <block wx:else>
+                    <image src="../../images/default_pic.png" mode="aspectFill"></image>
+                </block>
+                </view>
+                <!--content-->
+                <view class="section_cont" bindtap="navigateDetail" data-aid="{{item.id}}">
+                    <view class="section_cont_sub">
+                        <text>{{item.subject}}</text>
+                    </view>
+                    <view class="section_cont_price">价格：{{item.price}}</view>
+                    <view>{{item.message}}</view>
+                </view>
+                <!--book-->
+                <view class="section_book" bindtap="bookTap" data-aid="{{item.id}}">
+                        <text>预约</text>
+                </view>
+            </view>
+            
+        </block>
+    </view>
     
+    <view wx:else>暂无数据</view>
 
 </view>
 
-
+</scroll-view>
+</view>

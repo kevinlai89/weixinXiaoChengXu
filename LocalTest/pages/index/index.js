@@ -1,77 +1,69 @@
 //index.js
-
-var util = require("../../utils/util.js");
 //获取应用实例
-var app = getApp();
+var app = getApp()
+var fileData = require('../../utils/data.js')
+
 Page({
+  // 页面初始数据
   data: {
-    userInfo: {},
-    buttonLoading: false, 
-    accountData:[],
-    accountTotal:0
+      colors:['red','orange','yellow','green','purple'],
+      // banner 初始化
+      banner_url: fileData.getBannerData(),
+      indicatorDots: true,
+      vertical: false,
+      autoplay: true,
+      interval: 3000,
+      duration: 1000,
+      // nav 初始化
+      navTopItems: fileData.getIndexNavData(),
+      navSectionItems: fileData.getIndexNavSectionData(),
+      curNavId: 1,
+		  curIndex: 0
   },
-  onLoad: function () {
-    console.log('onLoad')
-    var that = this;
-
-    // 获取记录
-    var tempAccountData = wx.getStorageSync("accountData") || [];
-    this.caculateTotal(tempAccountData);
-    this.setData({
-        accountData: tempAccountData
-    });
-
+   
+  onLoad:function(){
+    var that = this
+    that.setData({
+      list: that.data.navSectionItems
+    })
   },
-  // 计算总额
-  caculateTotal:function(data){
-      var tempTotal = 0;
-      for(var x in data){
-          tempTotal += parseFloat(data[x].amount);
-      }
+  //标签切换
+  switchTab: function(e) {
+      let id = e.currentTarget.dataset.id,
+      index = parseInt(e.currentTarget.dataset.index)
+      this.curIndex = parseInt(e.currentTarget.dataset.index)
+      console.log(e)
+      var that = this
       this.setData({
-        accountTotal: tempTotal
-      });
+        curNavId: id,
+        curIndex: index,
+      })
+      
   },
-  //表单提交
-  formSubmit:function(e){
-      this.setData({
-        buttonLoading: true
-      });
-
-      var that = this;
-      setTimeout(function(){
-          var inDetail = e.detail.value.inputdetail;
-          var inAmount = e.detail.value.inputamount;
-          if(inDetail.toString().length <= 0 || inAmount.toString().length <= 0){
-              console.log("can not empty");
-              that.setData({
-                buttonLoading: false
-              });
-              return false;
-          }
-          
-          //新增记录
-          var tempAccountData = wx.getStorageSync("accountData") || [];
-          tempAccountData.unshift({detail:inDetail,amount:inAmount});
-          wx.setStorageSync("accountData",tempAccountData);
-          that.caculateTotal(tempAccountData);
-          that.setData({
-              accountData: tempAccountData,
-              buttonLoading: false
-          });
-
-      },1000);
+  // 跳转至详情页
+  navigateDetail: function(e){
+    wx.navigateTo({
+      url:'../detail/detail?artype=' + e.currentTarget.dataset.artype
+    })
   },
-  //删除行
-  deleteRow: function(e){
-     var that = this;
-     var index = e.target.dataset.indexKey;
-     var tempAccountData = wx.getStorageSync("accountData") || [];
-     tempAccountData.splice(index,1);
-     wx.setStorageSync("accountData",tempAccountData);
-     that.caculateTotal(tempAccountData);
-     that.setData({
-        accountData: tempAccountData,
-     });
+  // 加载更多
+  loadMore: function (e) {
+    console.log('加载更多')
+    var curid = this.data.curIndex
+
+    if (this.data.navSectionItems[curid].length === 0) return
+    
+    var that = this
+    that.data.navSectionItems[curid] = that.data.navSectionItems[curid].concat(that.data.navSectionItems[curid])
+    that.setData({
+      list: that.data.navSectionItems,
+    }) 
+  },
+  // book
+  bookTap: function(e){
+    wx.navigateTo({
+      url:'../book/book?aid='+e.currentTarget.dataset.aid
+    })
   }
+  
 })
