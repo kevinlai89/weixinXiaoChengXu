@@ -1,0 +1,37 @@
+{
+  "pages":[
+    "pages/index/index",
+      "pages/lists/lists",
+     "pages/aboutme/aboutme"
+   
+  ],
+  "window":{
+    "backgroundTextStyle":"dark",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "记账",
+    "navigationBarTextStyle":"black",
+    "backgroundColor": "gray"
+  },
+    "tabBar": {
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "记录费用",
+      "iconPath":"images/1.png",
+      "selectedIconPath":"images/2.png"
+    },
+
+        {
+      "pagePath": "pages/aboutme/aboutme",      
+      "text": "关于我们",
+      "iconPath":"images/3.png",
+      "selectedIconPath":"images/4.png"
+    }
+   
+    ]
+  },
+  "debug":true
+}
+
+
+
+

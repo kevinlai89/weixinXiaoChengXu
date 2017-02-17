@@ -1,0 +1,62 @@
+
+.container
+{
+    background-color: white;
+}
+
+.account-detail{
+    height: 100rpx;
+    padding: 2 30rpx;
+   
+        border: 2px solid red;
+        margin: 0 5%;
+        
+}
+
+.account-amount{
+    height: 50rpx;
+    margin-top: 5px;
+    padding: 2 30rpx;
+  
+    margin: 8px 5%;
+        border: 2px solid red;
+}
+
+.add-one{
+    margin-top: 20rpx;
+       margin: 0 5%;
+
+}
+
+.account-list-text{
+   
+    margin:30rpx  0 30rpx 5%;
+}
+
+.account-list-all-amount{
+  
+    align-self: flex-end;
+    padding-right: 25rpx;
+}
+
+
+.account-list{
+  
+    margin:30rpx 0 0 30rpx;
+    display: flex;
+    flex-direction: row;
+    background-color:wheat;
+    line-height: 70rpx;
+}
+
+
+.account-list-detail{
+    flex:1;
+}
+
+
+.account-list-amount{
+    width: 100rpx;
+}
+ 
+

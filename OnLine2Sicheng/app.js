@@ -31,7 +31,7 @@ App({
                   success: function (res) {
                     that.globalData.userInfo = res.userInfo
                     typeof cb == "function" && cb(that.globalData.userInfo)
-
+                    
                     //console.log(res);
                     wx.request({
                       url: that.url + 'addon/Cms/Cms/saveUserInfo',
@@ -57,9 +57,9 @@ App({
   globalData: {
     userInfo: null
   },
-//https://www2.ec-sourcing.com/index.php?s=/addon/Cms/Cms/getlist
-   url:'https://www2.ec-sourcing.com/index.php?s=' 
- //  url:'http://localhost:6001/index.php?s=' 
-
+  url: 'http://localhost:6001/index.php?s='
+   //http://120.25.151.79:808/index.php?s=addon/cms/cms/getlist3.         
+ // url: ' http://120.25.151.79:808/index.php?s='
+ 
 
 })
