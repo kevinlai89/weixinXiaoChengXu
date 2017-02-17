@@ -13,9 +13,16 @@
     "backgroundColor": "gray"
   },
     "tabBar": {
-    "list": [{
+    "list": [
+      {
       "pagePath": "pages/index/index",
       "text": "记录费用",
+      "iconPath":"images/1.png",
+      "selectedIconPath":"images/2.png"
+    },
+    {
+      "pagePath": "pages/lists/lists",
+      "text": "列表明细",
       "iconPath":"images/1.png",
       "selectedIconPath":"images/2.png"
     },
