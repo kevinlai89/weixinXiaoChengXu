@@ -2,13 +2,14 @@
   "pages":[
     "pages/index/index",
       "pages/lists/lists",
+      "pages/address/add/add",
      "pages/aboutme/aboutme"
    
   ],
   "window":{
     "backgroundTextStyle":"dark",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "记账",
+    "navigationBarTitleText": "物流软件演示-测试",
     "navigationBarTextStyle":"black",
     "backgroundColor": "gray"
   },
@@ -21,6 +22,11 @@
       "selectedIconPath":"images/2.png"
     },
     {
+      "pagePath": "pages/address/add/add",
+      "text": "自动定位",
+      "iconPath":"images/1.png",
+      "selectedIconPath":"images/2.png"
+    },   {
       "pagePath": "pages/lists/lists",
       "text": "列表明细",
       "iconPath":"images/1.png",

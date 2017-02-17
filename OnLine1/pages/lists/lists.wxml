@@ -1,8 +1,20 @@
 <!--lists.wxml-->
 <view class="container">
+
+
 <view class="list">
 
-   <view class="imgs"><image src="http://www.zhiduotong.com/upload/201607/1469462427.png" class="in-img" background-size="cover" model="scaleToFill"></image></view>
+   <view class="imgs"><image src="zdtlogo.png" class="in-img" background-size="cover" model="scaleToFill"></image></view>
+    <view class="infos">
+      <view class="title">柜号KJSD63259拖车费</view>
+      <view class="productPrice">59000.00元</view>
+          </view> 
+</view>
+
+
+<view class="list">
+
+   <view class="imgs"><image src="http://file.service.qq.com/user-files/uploads/201512/4758a27ee1a042a9276211e1c4874d67.png" class="in-img" background-size="cover" model="scaleToFill"></image></view>
     <view class="infos">
       <view class="title">柜号KJSD63259拖车费</view>
       <view class="productPrice">5000.00元</view>
@@ -13,7 +25,7 @@
 
 <view class="list">
 
-   <view class="imgs"><image src="http://www.zhiduotong.com/upload/201607/1469462427.png" class="in-img" background-size="cover" model="scaleToFill"></image></view>
+   <view class="imgs"><image src="http://file.service.qq.com/user-files/uploads/201512/eac61f867952a9b6f89fca66f7478541.png" class="in-img" background-size="cover" model="scaleToFill"></image></view>
     <view class="infos">
       <view class="title">柜号KJSD63259拖车费</view>
       <view class="productPrice">65000.00元</view>
@@ -25,7 +37,7 @@
 
 <view class="list">
 
-   <view class="imgs"><image src="http://www.zhiduotong.com/upload/201607/1469462427.png" class="in-img" background-size="cover" model="scaleToFill"></image></view>
+   <view class="imgs"><image src="http://file.service.qq.com/user-files/uploads/201512/5b33522be46ef589d8baf9342c91d8c2.png" class="in-img" background-size="cover" model="scaleToFill"></image></view>
     <view class="infos">
       <view class="title">柜号KJSD63259拖车费</view>
       <view class="productPrice">785000.00元</view>
@@ -34,15 +46,4 @@
  
 </view>
 
-
-<view class="list">
-
-   <view class="imgs"><image src="http://www.zhiduotong.com/upload/201607/1469462427.png" class="in-img" background-size="cover" model="scaleToFill"></image></view>
-    <view class="infos">
-      <view class="title">柜号KJSD63259拖车费</view>
-      <view class="productPrice">59000.00元</view>
-          </view>
-
- 
-</view>
 </view>

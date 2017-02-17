@@ -1,95 +1,78 @@
-//index.js
-//获取应用实例
-var app = getApp()
+const AV = require('../../utils/av-weapp.js')
 Page({
-  data: {
-    motto: 'Senparc.Weixin SDK Demo',
-    userInfo: {}
-  },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
-
-  bindWebsocketTap: function(){
-    wx.navigateTo({
-      url: '../websocket/websocket'
-    })
-  },
-
-  //处理wx.request请求
-  doRequest:function(){
-    var that = this;
-    wx.request({
-      url: 'https://sdk.weixin.senparc.com/WxOpen/RequestData',
-      data: { nickName : that.data.userInfo.nickName},
-      method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      // header: {}, // 设置请求的 header
-      success: function(res){
-        // success
-        var json = res.data;
-        //模组对话框
-        wx.showModal({
-          title: '收到消息',
-          content: json.msg,
-          showCancel:false,
-          success: function(res) {
-            if (res.confirm) {
-              console.log('用户点击确定')
-            }
-          }
-        });
-      },
-      fail: function() {
-        // fail
-      },
-      complete: function() {
-        // complete
-      }
-    })
-  },
-  //测试模板消息提交form
-  formTemplateMessageSubmit:function(e)
-  {
-       var submitData = JSON.stringify({
-          sessionId:wx.getStorageSync("sessionId"),
-          formId:e.detail.formId
-        });
-
-        wx.request({
-          url: 'https://sdk.weixin.senparc.com/WxOpen/TemplateTest',
-          data: submitData,
-          method: 'POST', 
-          success: function(res){
-            // success
-            var json = res.data;
-            console.log(res.data);
-            //模组对话框
-            wx.showModal({
-              title: '已尝试发送模板消息',
-              content: json.msg,
-              showCancel:false
-            });
-          }
-        })
-  },
-
-  onLoad: function () {
-    console.log('onLoad')
-    var that = this
-    //调用应用实例的方法获取全局数据
-    app.getUserInfo(function(userInfo){
-      //更新数据
-      that.setData({
-        userInfo:userInfo
-      })
-      //console.log(userInfo);
-    })
-
-    var interval = setInterval(function() {
-        that.setData({time:new Date().toLocaleTimeString()});
-    },1000);
-  }
+	data: {
+		banner: [],
+		goods: [],
+		bannerHeight: Math.ceil(290.0 / 750.0 * getApp().screenWidth)
+	},
+	onLoad: function (options) {
+		this.loadBanner();
+		this.loadMainGoods();
+		this.getInviteCode(options);
+	},
+	getInviteCode: function (options) {
+		if (options.uid != undefined) {
+			wx.showToast({
+				title: '来自用户:' + options.uid + '的分享',
+				icon: 'success',
+				duration: 2000
+			})
+		}
+	},
+	loadBanner: function () {
+		var that = this;
+		var query = new AV.Query('Banner');
+		// query.include('image');
+		query.find().then(function (bannerObjects) {
+			var banner = [];
+			for (var i = 0; i < bannerObjects.length; i++) {
+				banner.push(bannerObjects[i].get('image').get('url'));
+			}
+			that.setData({
+				banner: banner
+			});
+		});
+	},
+	loadMainGoods: function () {
+		var that = this;
+		var query = new AV.Query('Goods');
+		query.equalTo('isHot', true);
+		query.find().then(function (goodsObjects) {
+			that.setData({
+				goods: goodsObjects
+			});
+		});
+	},
+	showDetail: function (e) {
+		var index = e.currentTarget.dataset.index;
+		var goodsId = this.data.goods[index].id;
+		wx.navigateTo({
+			url: "../goods/detail/detail?objectId=" + goodsId
+		});
+	},
+	showCategories: function () {
+		// wx.navigateTo({
+		// 	url: "../category/category"
+		// });
+		wx.switchTab({
+			url: "../category/category"
+		});
+	},
+	showOrders: function () {
+		wx.navigateTo({
+			url: "../order/list/list?status=1"
+		});
+	},
+	onShareAppMessage: function () {
+		return {
+			title: '灵动开源电商系统',
+			desc: '一个基于LeanCloud开发的开源电商系统',
+			path: '/pages/index/index?uid=4719784'
+		}
+	},
+	showGoods: function () {
+		wx.navigateTo({
+			url: '../goods/detail/detail?objectId=5816e3b22e958a0054a1d711'
+		});
+	}
 })

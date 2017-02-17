@@ -1,0 +1,9 @@
+
+<form bindsubmit="formSubmit">
+	<view class="cell">
+	    <text>区域</text><text bindtap="cascadePopup" class="area_select">{{areaSelectedStr}}</text>
+
+	</view>
+
+		    <text bindtap="fetchOPI" class="opi">点击自动获取</text>
+</form>
