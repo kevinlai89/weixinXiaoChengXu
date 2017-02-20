@@ -1,0 +1,17 @@
+<view class="container edit_wrap">
+<form bindsubmit="submitForm" id="123">
+    <view class="form_group">
+        <text>图片：</text>
+<image style="width: 90px; height: 90px; background-color: #eeeeee;" src="{{trackInfo.PicUrl}}" bindtap="selectPic"></image>        
+    </view>
+    <view class="form_group">
+        <text>备注：</text>
+        <input type="text"  bindinput="bindKeyCaption" placeholder="请输入备注" placeholder-class="placeholder_style" name="data_name" value="{{trackInfo.Caption}}" />
+    </view>
+    <view class="form_group">
+        <text>金额：</text>
+        <input type="text"  bindinput="bindKeyAmount" placeholder="请输入金额" placeholder-class="placeholder_style" name="data_phone" value="{{trackInfo.Amount}}"/>
+    </view>
+    <button class="save_btn"  formType="submit">保存</button>
+</form>
+</view>

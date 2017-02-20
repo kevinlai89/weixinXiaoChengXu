@@ -1,0 +1,37 @@
+<view class="container">
+<scroll-view  scroll-y="true" class="page-body" bindscrolltolower="loadMore">
+  <!--list-->
+  <view class="nav_section">
+    <view wx:if="{{list}}">
+        <block wx:for="{{list}}">
+            <view class="nav_section_items" bindtap="navigateDetail" data-aid="{{item.id}}">
+                <!--image-->
+                <view class="section_image" >
+                <block wx:if="{{item.FilePath}}">
+                    <image src="{{item.FilePath}}" mode="aspectFill"></image>
+                </block>
+                <block wx:else>
+                    <image src="../../images/default_pic.png" mode="aspectFill"></image>
+                </block>
+                </view>
+                <!--content-->
+                <view class="section_cont" >
+                    <view class="section_cont_sub">
+                        <text>{{item.Caption}}</text>
+                    </view>
+                    <view class="section_cont_price" style="color:#000">{{item.nickname}}<text class="section_cont_price">  {{item.Amount}}</text></view>
+                </view>
+                <!--book-->
+                <view class="section_book" >
+                    <view>{{item.distance}}</view>
+                </view>
+            </view>    
+        </block>
+    </view>
+    
+    <view wx:else>暂无数据</view>
+          
+</view>
+
+</scroll-view>
+</view>
